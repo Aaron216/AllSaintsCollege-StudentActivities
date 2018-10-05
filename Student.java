@@ -10,7 +10,7 @@ public class Student {
     public Student(){
         firstname = "";
         surname = "";
-        detials = new LinkedList<String>();
+        details = new LinkedList<String>();
     }
 
     // Mutators
@@ -48,6 +48,10 @@ public class Student {
 
     public String getSurname() {
         return surname;
+    }
+
+    public String getFullname() {
+        return (firstname + " " + surname);
     }
 
     public LinkedList<String> getDetails() {
