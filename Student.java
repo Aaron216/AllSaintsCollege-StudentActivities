@@ -1,4 +1,5 @@
 import java.util.LinkedList;
+import java.util.Collections;
 
 public class Student {
     // Declare Fields
@@ -59,8 +60,10 @@ public class Student {
     }
 
     public String toCSVRow() {
-        String row = "";
+        // Sort Details
+        Collections.sort(details);
 
+        String row = "";
         row += firstname + ",";
         row += surname + ",";
         for (String detail : details) {

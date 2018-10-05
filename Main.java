@@ -4,12 +4,15 @@ import java.util.HashMap;
 public class Main {
     public static void main(String[] args) {
         // Check number of arguments
-        if (args.length != 1) {
-            System.out.print("Incorrect number of arguments.");
+        if (args.length != 2) {
+            System.out.println("Incorrect number of arguments.");
+            System.out.println(" 1. Input file");
+            System.out.println(" 2. Output file");
             System.exit(1);
         }
 
         HashMap<String, Student> students = importStudents(args[0]);
+        writeFile(students, args[1]);
     }
 
     private static HashMap<String, Student> importStudents(String filename) {
@@ -83,5 +86,40 @@ public class Main {
         students.put(fullname, currStudent);
 
         return students;
+    }
+
+    private static void writeFile(HashMap<String, Student> students, String filename) {
+        Student currStudent;
+        // Init file write
+        FileWriter fileWrtr = null;
+        BufferedWriter out;
+
+        try {
+            fileWrtr = new FileWriter(filename, true);
+            out = new BufferedWriter(fileWrtr);
+
+            // Iterate through students
+            for (String currName : students.keySet()) {
+                currStudent = students.get(currName);
+                out.write(currStudent.toCSVRow());
+                out.newLine();
+            }
+            
+            // Close
+            out.close();
+        }
+        catch (IOException ioException1) {
+            if (fileWrtr != null) {
+                try {
+                    // Close file
+                    fileWrtr.close();
+                }
+                catch (IOException ioException2) {
+                    // No further action
+                }
+                System.out .println("Error writing to file.");
+                System.out.println(ioException1.getMessage());
+            }
+        }
     }
 }
