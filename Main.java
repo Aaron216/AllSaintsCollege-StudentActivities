@@ -12,13 +12,19 @@ public class Main {
             System.exit(1);
         }
 
-        // Read input file
-        LinkedList<String> inputStrings = FileIO.readFile(args[0]);
-        HashMap<String, Student> students = processInput(inputStrings);
+        try {
+            // Read input file
+            LinkedList<String> inputStrings = FileIO.readFile(args[0]);
+            HashMap<String, Student> students = processInput(inputStrings);
 
-        // Write output file
-        LinkedList<String> outputStrings = getOutput(students);
-        FileIO.writeFile(outputStrings, args[1]);
+            // Write output file
+            LinkedList<String> outputStrings = getOutput(students);
+            FileIO.writeFile(outputStrings, args[1]);
+        }
+        catch (Exception ex) {
+            System.out.println("Error: " + ex.getMessage());
+            System.exit(1);
+        }
     }
 
     public static HashMap<String, Student> processInput(LinkedList<String> inputStrings) {

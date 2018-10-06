@@ -28,20 +28,21 @@ public class FileIO {
                 lineNo++;
                 line = reader.readLine();
             }
-
-            reader.close();
         }
-        catch(IOException ioException1) {
+        catch (Exception ex) {
+            System.out.println("Error reading file at line " + lineNo);
+            System.out.println(ex.getMessage());
+        }
+        finally {
             if (fileStrm != null) {
                 // Close file stream
                 try {
                     fileStrm.close();
                 }
-                catch (IOException ioException2) {
-                    // No further action
+                catch (IOException ex) {
+                    System.out.println("Error closing file");
+                    System.out.println(ex.getMessage());
                 }
-                System.out.println("Error reading file at line " + lineNo);
-                System.out.println(ioException1.getMessage());
             }
         }
 
@@ -49,12 +50,17 @@ public class FileIO {
     }
 
     public static void writeFile(LinkedList<String> outputStrings, String filename) {
+        // Check file name
+        if (!filename.endsWith(".csv")) {
+            filename += ".csv";
+        }
+
         // Init file write
         FileWriter fileWrtr = null;
         BufferedWriter out;
 
         try {
-            fileWrtr = new FileWriter(filename, true);
+            fileWrtr = new FileWriter(filename, false);
             out = new BufferedWriter(fileWrtr);
 
             // Iterate through strings
@@ -66,17 +72,20 @@ public class FileIO {
             // Close
             out.close();
         }
-        catch (IOException ioException1) {
+        catch (Exception ex) {
+            System.out .println("Error writing to file.");
+            System.out.println(ex.getMessage());
+        }
+        finally {
             if (fileWrtr != null) {
                 try {
                     // Close file
                     fileWrtr.close();
                 }
-                catch (IOException ioException2) {
-                    // No further action
+                catch (IOException ex) {
+                    System.out .println("Error closing file.");
+                    System.out.println(ex.getMessage());
                 }
-                System.out .println("Error writing to file.");
-                System.out.println(ioException1.getMessage());
             }
         }
     }
