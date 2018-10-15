@@ -1,3 +1,13 @@
+/**
+ * All Saints' College
+ * Student Activities
+ * Aaron Musgrave
+ * 15/10/2018
+ * 
+ * File IO Class
+ * Responsible for reading input file and writing output file
+ */
+
 import java.io.*;
 import java.util.LinkedList;
 

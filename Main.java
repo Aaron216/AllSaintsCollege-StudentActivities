@@ -1,3 +1,13 @@
+/**
+ * All Saints' College
+ * Student Activities
+ * Aaron Musgrave
+ * 15/10/2018
+ * 
+ * Main Class
+ * Responsible for processing input file
+ */
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;

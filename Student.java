@@ -1,3 +1,13 @@
+/**
+ * All Saints' College
+ * Student Activities
+ * Aaron Musgrave
+ * 15/10/2018
+ * 
+ * Student Class
+ * Responsible for storing data about a student
+ */
+
 import java.util.LinkedList;
 import java.util.Collections;
 
