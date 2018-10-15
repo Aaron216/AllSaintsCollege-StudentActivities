@@ -5,13 +5,13 @@ public class Student {
     // Declare Fields
     private String firstname;
     private String surname;
-    private LinkedList<String> details;
+    private LinkedList<String> detailList;
 
     // Constructor
     public Student(){
         firstname = "";
         surname = "";
-        details = new LinkedList<String>();
+        detailList = new LinkedList<String>();
     }
 
     // Mutators
@@ -38,7 +38,7 @@ public class Student {
             throw new IllegalArgumentException("Detail cannot be null");
         }
         else {
-            details.add(in);
+            detailList.add(in);
         }
     }
 
@@ -56,17 +56,17 @@ public class Student {
     }
 
     public LinkedList<String> getDetails() {
-        return details;
+        return detailList;
     }
 
     public String toCSVRow() {
         // Sort Details
-        Collections.sort(details);
+        Collections.sort(detailList);
 
         String row = "";
         row += firstname + ",";
         row += surname + ",";
-        for (String detail : details) {
+        for (String detail : detailList) {
             row += detail + ",";
         }
 

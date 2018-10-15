@@ -1,4 +1,4 @@
-import java.io.*;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -62,9 +62,17 @@ public class Main {
 
     public static LinkedList<String> getOutput(HashMap<String, Student> students) {
         LinkedList<String> outputStrings = new LinkedList<>();
+        LinkedList<String> keySet = new LinkedList<>(students.keySet());
         Student currStudent;
 
-        for (String currKey : students.keySet()) {
+        // Sort students by name
+        Collections.sort(keySet);
+
+        // Add Headers
+        outputStrings.add("Firstname,Surname,Details");
+
+        // Iterate through students
+        for (String currKey : keySet) {
             currStudent = students.get(currKey);
             outputStrings.add(currStudent.toCSVRow());
         }
