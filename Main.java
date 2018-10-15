@@ -69,7 +69,7 @@ public class Main {
         Collections.sort(keySet);
 
         // Add Headers
-        outputStrings.add("Firstname,Surname,Details");
+        outputStrings.add("\"Firstname\",\"Surname\",\"Details\"");
 
         // Iterate through students
         for (String currKey : keySet) {

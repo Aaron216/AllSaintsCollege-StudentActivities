@@ -64,10 +64,10 @@ public class Student {
         Collections.sort(detailList);
 
         String row = "";
-        row += firstname + ",";
-        row += surname + ",";
+        row += "\"" + firstname + "\",";
+        row += "\"" + surname + "\",";
         for (String detail : detailList) {
-            row += detail + ",";
+            row += "\"" + detail + "\",";
         }
 
         return row;
